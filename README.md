@@ -1,0 +1,2 @@
+# KAPPABOT
+Discord bot

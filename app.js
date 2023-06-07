@@ -24,7 +24,6 @@ client.on ('ready', async () => {
         setInterval(() => {
                 //CALL TO API HERE
                 guild.members.me.setNickname(generateRandomWord());
-                i++;
           }, 60 * 1000);
         
   });

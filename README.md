@@ -1,4 +1,4 @@
-# KAPPABOT
+# Observer
 Discord bot
 
 

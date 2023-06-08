@@ -23,7 +23,8 @@ client.on ('ready', async () => {
         guild.members.me.setNickname('Observer');
         setInterval(() => {
                 //CALL TO API HERE
-                guild.members.me.setNickname(generateRandomWord());
+                console.log(new Date());
+                guild.members.me.setNickname('Render in cue: '+generateRandomWord());
           }, 60 * 1000);
         
   });

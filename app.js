@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 require('dotenv').config();
 const token = process.env.DISCORD_TOKEN;
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -19,13 +19,22 @@ function generateRandomWord() {
   
 client.on ('ready', async () => {
         console.log('Render cue observer is online...');
-        const guild = await client.guilds.fetch(process.env.GUILD_ID);
-        guild.members.me.setNickname('Observer');
+
+
+    //CHANGING NICK JUST IN CASE
+        //const guild = await client.guilds.fetch(process.env.GUILD_ID);
+        //guild.members.me.setNickname('Observer');
+        
         setInterval(() => {
                 //CALL TO API HERE
                 console.log(new Date());
-                guild.members.me.setNickname('Render in cue: '+generateRandomWord());
+                client.user.setPresence({
+                  activities: [{ name: 'Render in cue: '+generateRandomWord() , type: ActivityType.Watching }],
+                  status: 'dnd',
+                });
+                //guild.members.me.setNickname('Render in cue: '+generateRandomWord());
           }, 60 * 1000);
+         
         
   });
   

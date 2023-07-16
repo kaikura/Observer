@@ -37,34 +37,27 @@ function generateRandomWord() {
   
 client.on ('ready', async () => {
         console.log('Render cue observer is online...');
-        let queue = await getqueue();
-        //console.log(queue);
-        if(queue!= null){
-        client.user.setPresence({
-          activities: [{ name: 'Render in cue: '+ queue.queue  , type: ActivityType.Watching }],
-          status: 'dnd',
-        });
-        
-
-    //CHANGING NICK JUST IN CASE
-        //const guild = await client.guilds.fetch(process.env.GUILD_ID);
-        //guild.members.me.setNickname('Observer');
-        
+        let queue;
         setInterval(async () => {
                 //CALL TO API HERE
           queue = await getqueue();
           //console.log(queue);
           if(queue!= null){
+            if(queue.queue!=0){
           client.user.setPresence({
             activities: [{ name: 'Render in cue: '+ queue.queue  , type: ActivityType.Watching }],
             status: 'dnd',
+          });
+            }else{
+          client.user.setPresence({
+            activities: [{ name: 'cue available', type: ActivityType.Watching }],
+            status: 'dnd',
         });
+      }
       }     
              
-                //guild.members.me.setNickname('Render in cue: '+generateRandomWord());
-          }, 30 * 1000);
-        }
-        
+              //guild.members.me.setNickname('Render in cue: '+generateRandomWord());
+        }, 30 * 1000);
   });
 
   

@@ -6,17 +6,6 @@ const token = process.env.DISCORD_TOKEN;
 const axios = require('axios').default;
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-const letters = ['1', '2', '3', '4', '5', '6'];
-
-function generateRandomWord() {
-        let word = '';
-        for (let i = 0; i < 3; i++) {
-          const randomIndex = Math.floor(Math.random() * letters.length);
-          word += letters[randomIndex];
-        }
-        return word;
-  }
-
   async function getqueue(){
     let url = "https://apib.ps-lab.io/getqueuewait";
     try {
